@@ -8,7 +8,7 @@ class Rps:
 	def __init__(self, n):
 		self.humanScore = 0
 		self.computerScore = 0
-		self.nFactor = n
+		self.ng = ngram.Ngram(n)
 		self.moves = []
 		self.accepted = 'rps'
 
@@ -32,7 +32,7 @@ class Rps:
 			self.printScore()
 
 	def decision(self):
-		nextMove = ngram.nGram(self.nFactor, self.moves)  
+		nextMove = self.ng.getNext(self.moves)  
 		
 		if nextMove == -1:
 			return random.choice(self.accepted) 
